@@ -4,7 +4,11 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/bharathkoptit/terraform-helloworld.git'
+                   script { 
+                    git branch: 'main',
+                        credentialsId: 'bkgit',
+                        url: 'https://github.com/bharathkoptit/terraform-helloworld.git'
+                }
             }
         }
         stage('Terraform Init') {
